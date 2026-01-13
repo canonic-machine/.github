@@ -6,6 +6,25 @@ This organization hosts the reference implementation of the CANONIC stack: a min
 
 ---
 
+## Multi-Repository Artifacts
+
+The CANONIC organization is composed of multiple repositories, each representing a distinct artifact in the governance-first stack. Direct links to each artifact:
+
+- [canonic](https://github.com/canonic-machine/canonic) — root axioms and vocabulary
+- [machine](https://github.com/canonic-machine/machine) — enforcement of governance constraints
+- [os](https://github.com/canonic-machine/os) — minimal operating substrate
+- [ledger](https://github.com/canonic-machine/ledger) — immutable evidence record
+- [writing](https://github.com/canonic-machine/writing) — governed human–AI interaction
+- [paper](https://github.com/canonic-machine/paper) — retrospective reconstruction and publication
+- [agents](https://github.com/canonic-machine/agents) — subordinate AI executors (no authority)
+- [stack](https://github.com/canonic-machine/stack) — observational composition across repositories
+- [validators](https://github.com/canonic-machine/validators) — (private enforcement, if available)
+- [patents](https://github.com/canonic-machine/patents) — disclosures and governance IP
+
+Each repository is independently valid and composable. For details, see the README in each repo.
+
+---
+
 ## What CANONIC is
 
 CANONIC defines *law before execution*.
@@ -22,23 +41,6 @@ The result is AI-assisted work that is:
 - reproducible
 - publication-safe
 - IP-safe
-
----
-
-## The public CANONIC stack
-
-The following repositories form the **public, open-source CANONIC stack**:
-
-- **canonic** — root axioms and vocabulary
-- **machine** — enforcement of governance constraints
-- **os** — minimal operating substrate
-- **ledger** — immutable evidence record
-- **writing** — governed human–AI interaction
-- **paper** — retrospective reconstruction and publication
-- **agents** — subordinate AI executors (no authority)
-- **stack** — observational composition across repositories
-
-Each repository is independently valid and composable.
 
 ---
 
