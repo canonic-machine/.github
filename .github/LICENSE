@@ -177,6 +177,9 @@ APPENDIX: How to apply the Apache License to your work.
    same "printed page" as the copyright notice for easier
    identification within third-party archives.
 
+# File: LICENSE
+# Description: Organization-wide Apache 2.0 license for CANONIC MACHINE metadata, templates, and shared policies. For provenance and third-party verification, this file is co-located with the copyright notice.
+
 Copyright 2026 Dexter Hadley <iDrDex@HadleyLab.org>
 
 Licensed under the Apache License, Version 2.0 (the "License");
