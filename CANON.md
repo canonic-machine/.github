@@ -8,12 +8,22 @@ inherits: /canonic/machine/os/
 
 ### 1. Service primitives
 
-The APPSTORE distributes exactly two irreducible services:
+The APPSTORE distributes services that emerge from canonification (IDF-157):
 
+**Core Services (Irreducible):**
 - **VaaS** — Validator-as-a-Service (compliance)
 - **TaaS** — Transcript-as-a-Service (evidence)
 
-All other services MUST decompose into these primitives.
+**Derived Services (Emerge from canonification):**
+- **PaaS** — Paper-as-a-Service (academic publishing)
+- **IPaaS** — IP-as-a-Service (patent production)
+- **GaaS** — Grants-as-a-Service (funding applications)
+- **WaaS** — Writing-as-a-Service (content production)
+- **CaaS** — Company-as-a-Service (entity governance)
+- **PubaaS** — Publishing-as-a-Service (release management)
+- **TypeaaS** — Typeset-as-a-Service (render pipeline)
+
+All services MUST decompose into VaaS + TaaS primitives. New services emerge through canonification of operations.
 
 ---
 
@@ -100,6 +110,33 @@ Services MUST offer three tiers:
 | Blockchain | IDF-149 | Distributed Ledger Consensus via Git |
 | Privacy | IDF-150 | Encrypted Git as Privacy Layer |
 | Access Matrix | IDF-151 | Visibility × Storage Access Matrix |
+| Render Pipeline | IDF-155 | Render Pipeline Validator |
+| Axiom Closure | IDF-156 | Axiom Closure Matrix |
+| Innovation Multiplier | IDF-157 | Innovation Multiplier Pattern |
+
+---
+
+### 8. Product Catalogue
+
+Services discovered through canonification (IDF-157):
+
+| Service | Full Name | Scope | Axioms | Orchestrator | Status |
+|---------|-----------|-------|--------|--------------|--------|
+| **VaaS** | Validators as a Service | /validators | 90 | `vaas.py` | LIVE |
+| **TaaS** | Transcripts as a Service | /transcript | 7 | `taas.py` | LIVE |
+| **PapaaS** | Paper as a Service | /paper | 29 | `papaas.py` | IMPLEMENTED |
+| **PubaaS** | Publishing as a Service | /publishing | 4 | `pubaas.py` | IMPLEMENTED |
+| **IPaaS** | IP as a Service | /patents | 9 | `ipaas.py` | IMPLEMENTED |
+| **GaaS** | Grants as a Service | /grants | 8 | `gaas.py` | IMPLEMENTED |
+| **WaaS** | Writing as a Service | /writing | 9 | `waas.py` | IMPLEMENTED |
+| **BaaS** | Books as a Service | /atulisms, /dividends | 8-9 | `baas.py` | IMPLEMENTED |
+| **CaaS** | Company as a Service | /companies | 6 | `caas.py` | IMPLEMENTED |
+
+**Master Orchestrator:** `appstore.py status` shows all products
+
+**Infrastructure (Implicit):** Git (blockchain) + CANONIC (process) + LLM (executor) + Encryption (privacy)
+
+**Product emergence formula:** CANONIFY → CLOSE → EXPOSE → PRODUCTIZE (IDF-157)
 
 ---
 
