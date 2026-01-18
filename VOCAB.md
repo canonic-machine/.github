@@ -4,6 +4,32 @@ inherits: /canonic/machine/os/
 
 ---
 
+## Core Architecture
+
+### CANONIC stack
+
+The complete execution environment: Git (state machine) + CANONIC (process) + LLM (executor).
+
+---
+
+### state machine
+
+Git. Commits, branches, merges, distribution, backup. The ledger layer.
+
+---
+
+### process
+
+CANONIC. Axioms, validators, cascade. The governance layer.
+
+---
+
+### executor
+
+LLM. Reads state, executes process, writes state. The agent layer.
+
+---
+
 ## Service Concepts
 
 ### VaaS
@@ -30,17 +56,31 @@ Pricing level for services: Starter, Professional, Enterprise.
 
 ---
 
+## Access Control
+
+### visibility
+
+Who can read content: public (anyone), private (org), encrypted (key holders).
+
+---
+
+### storage
+
+Who has the ledger: local (single machine), private (org clones), distributed (everyone clones).
+
+---
+
+### encrypted + distributed
+
+The killer combo. Everyone clones the chain. No one can read without key. Maximum backup, zero access risk.
+
+---
+
 ## Distribution Concepts
 
 ### app store
 
-The distribution layer for CANONIC services. GitHub IS the app store.
-
----
-
-### stack submission
-
-A user-submitted governance stack for validation and distribution via the app store.
+The CANONIC execution layer. GitHub IS the app store. Git IS the blockchain.
 
 ---
 

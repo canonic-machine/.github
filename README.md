@@ -1,68 +1,106 @@
-# APPSTORE
+# CANONIC App Store
 
-**Two services. Complete coverage.**
-
----
-
-## Services
-
-| Service | What | IDF |
-|---------|------|-----|
-| **VaaS** | Validator-as-a-Service | IDF-070 |
-| **TaaS** | Transcript-as-a-Service | IDF-024 |
+**Git is the blockchain. CANONIC is the process. LLM is the executor.**
 
 ---
 
-## VaaS — Validate
+## Featured
 
-"Is it compliant?"
+### VaaS — Validator-as-a-Service
+
+> "Is it compliant?"
+
+Run governance validators against any stack. Get certified.
 
 ```
-Stack → VaaS → PASS/FAIL
+Your Stack → VaaS → PASS/FAIL + Badge
 ```
 
-- Run validators against governance stacks
-- FDA, HIPAA, CMS, SEC, IRB...
-- "Verified CANONIC" badge
+**Verticals:** Healthcare (HIPAA, FDA) • Legal • Finance (SEC) • Research (IRB)
+
+[Get Started →](services/vaas/)
 
 ---
 
-## TaaS — Transcript
+### TaaS — Transcript-as-a-Service
 
-"What happened?"
+> "What happened?"
+
+Capture AI session evidence. Hash-verified. Court-ready.
 
 ```
-AI Session → TaaS → Evidence
+AI Session → TaaS → Encrypted Evidence
 ```
 
-- Capture AI session evidence
-- Hash-verified immutability
-- Legal/patent proof
+**Features:** Immutable • Encrypted • Distributed backup
+
+[Get Started →](services/taas/)
+
+---
+
+## What's New
+
+### v0.1 — Infrastructure Closure
+
+- Git + LLM only. No other infrastructure.
+- Encrypted distribution (zero-access backup)
+- Visibility × Storage access matrix
+
+**Coming in v0.2:** VaaS endpoint, GitHub Marketplace listing
+
+---
+
+## Categories
+
+| Category | Validators | Status |
+|----------|------------|--------|
+| **Core** | Triad, Introspection, Inheritance | Available |
+| **Healthcare** | HIPAA, FDA, CMS | Coming Soon |
+| **Legal** | Privilege, Evidence | Coming Soon |
+| **Finance** | SEC, Audit | Coming Soon |
+| **Research** | IRB, Reproducibility | Coming Soon |
 
 ---
 
 ## Pricing
 
-| Tier | VaaS | TaaS |
-|------|------|------|
-| Starter | Core validators | 1 channel |
-| Professional | All 90 validators | All channels |
-| Enterprise | Custom + SLA | Team + API |
+| Tier | VaaS | TaaS | Price |
+|------|------|------|-------|
+| **Starter** | Core validators | 1 channel | Free |
+| **Professional** | All validators | All channels | $99/mo |
+| **Enterprise** | Custom + SLA | Team + API | Contact |
 
 ---
 
-## Distribution
+## The Stack
 
-GitHub IS the App Store.
+```
+┌─────────────────────────────────────┐
+│  LLM (Executor)                     │
+├─────────────────────────────────────┤
+│  CANONIC (Process)                  │
+│  - Axioms                           │
+│  - Validators (VaaS)                │
+│  - Evidence (TaaS)                  │
+├─────────────────────────────────────┤
+│  Git (State Machine)                │
+│  - Commits = State transitions      │
+│  - Clones = Distributed ledger      │
+│  - Encryption = Privacy layer       │
+└─────────────────────────────────────┘
+```
 
-- [services/vaas/](services/vaas/) — Validator-as-a-Service
-- [services/taas/](services/taas/) — Transcript-as-a-Service
+No databases. No servers. No cron. Just Git + CANONIC + LLM.
 
 ---
 
 ## Governance
 
-- [CANON.md](CANON.md) — 5 axioms
+- [CANON.md](CANON.md) — 7 axioms
 - [VOCAB.md](VOCAB.md) — Terminology
+
+---
+
+**Status: Public. Coming Soon.**
 
 ---
