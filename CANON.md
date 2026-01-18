@@ -52,21 +52,29 @@ GitHub IS the App Store. Git IS the blockchain.
 
 ---
 
-### 4. Visibility × Storage
+### 4. Ledger Categories (Visibility × Encryption)
 
-Access control via orthogonal dimensions (IDF-151):
+Four ledger categories via orthogonal dimensions (IDF-151):
 
-**Visibility** (who can read):
-- public — anyone
-- private — org members
-- encrypted — key holders only
+```
+              │ PUBLIC              │ PRIVATE
+──────────────┼─────────────────────┼─────────────────────
+PLAINTEXT     │ Open Source         │ Enterprise
+              │ (GitHub public)     │ (GitHub private)
+──────────────┼─────────────────────┼─────────────────────
+ENCRYPTED     │ Distributed         │ Personal
+              │ (max backup,        │ (local only,
+              │  zero access risk)  │  encrypted)
+```
 
-**Storage** (who has clone):
-- local — single machine
-- private — org clones
-- distributed — everyone clones
+| Category | Visibility | Encryption | Use Case |
+|----------|------------|------------|----------|
+| **Open** | Public | Plaintext | Open source, public repos |
+| **Enterprise** | Private | Plaintext | Corporate, internal repos |
+| **Distributed** | Public | Encrypted | Max backup, zero access risk |
+| **Personal** | Private | Encrypted | Sensitive personal data |
 
-Encrypted + distributed = max backup, zero access risk.
+Git provides the blockchain for all 4 categories. Encryption adds the privacy layer.
 
 ---
 
