@@ -8,8 +8,8 @@ set -e
 
 # Stack-portable paths (relative to Canonic root)
 CANONIC_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-TRANSCRIPT_DIR="$CANONIC_ROOT/transcripts/raw/claude-code"
-RECORDS_DIR="$CANONIC_ROOT/transcripts/records"
+TRANSCRIPT_DIR="$CANONIC_ROOT/.transcripts/raw/claude-code"
+RECORDS_DIR="$CANONIC_ROOT/.transcripts/records"
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <session-jsonl-path>"
@@ -79,6 +79,6 @@ echo "  Record: ${RECORD_FILE}"
 echo "  Mirror: ${MIRROR_PATH}"
 echo ""
 echo "To ledger, commit the record:"
-echo "  cd $CANONIC_ROOT/transcripts"
+echo "  cd $CANONIC_ROOT/.transcripts"
 echo "  git add records/ raw/"
 echo "  git commit -m \"TRANSCRIPT: ${TX_ID} captured (IDE)\""
