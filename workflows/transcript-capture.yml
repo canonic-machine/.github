@@ -1,0 +1,84 @@
+name: TRANSCRIPT Capture
+
+on:
+  workflow_dispatch:
+    inputs:
+      session_path:
+        description: 'Path to session JSONL file'
+        required: true
+        type: string
+      channel:
+        description: 'Channel (IDE, App, API)'
+        required: true
+        default: 'IDE'
+        type: choice
+        options:
+          - IDE
+          - App
+          - API
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get next transcript ID
+        id: next_id
+        run: |
+          # Find highest existing tx number
+          LAST=$(ls transcript/records/tx*.md 2>/dev/null | sed 's/.*tx0*\([0-9]*\).*/\1/' | sort -n | tail -1)
+          NEXT=$((${LAST:-0} + 1))
+          NEXT_PADDED=$(printf "%03d" $NEXT)
+          echo "id=tx${NEXT_PADDED}" >> $GITHUB_OUTPUT
+          echo "Next transcript ID: tx${NEXT_PADDED}"
+
+      - name: Calculate hash
+        id: hash
+        run: |
+          # Hash would be calculated from actual file
+          # For manual dispatch, use placeholder
+          HASH="sha256:$(echo '${{ inputs.session_path }}' | sha256sum | cut -d' ' -f1)"
+          echo "hash=${HASH}" >> $GITHUB_OUTPUT
+
+      - name: Create transcript record
+        run: |
+          DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          DATE_SHORT=$(date -u +%Y%m%d)
+
+          cat > transcript/records/${{ steps.next_id.outputs.id }}-claude-session-${DATE_SHORT}.md << EOF
+          # TRANSCRIPT RECORD - ${{ steps.next_id.outputs.id }}
+
+          ---
+
+          ## Metadata
+
+          - Transcript ID: ${{ steps.next_id.outputs.id }}
+          - Timestamp: ${DATE}
+          - Channel: ${{ inputs.channel }}
+          - Source reference: ${{ inputs.session_path }}
+          - Hash: ${{ steps.hash.outputs.hash }}
+          - Status: Recorded
+
+          ---
+
+          ## Contents
+
+          Claude ${{ inputs.channel }} session. Raw content stored privately per TRANSCRIPT Axiom 7.
+
+          ---
+
+          ## Notes
+
+          Captured via GitHub Actions workflow.
+
+          ---
+          EOF
+
+      - name: Commit transcript record
+        run: |
+          git config user.name "CANONIC Bot"
+          git config user.email "bot@canonic.org"
+          git add transcript/records/
+          git commit -m "TRANSCRIPT: ${{ steps.next_id.outputs.id }} captured (${{ inputs.channel }})"
+          git push
