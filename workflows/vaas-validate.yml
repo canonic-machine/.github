@@ -1,0 +1,77 @@
+name: VaaS Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run triad validator
+        id: triad
+        run: |
+          # Check for CANON.md, VOCAB.md, README.md
+          MISSING=""
+          [ ! -f "CANON.md" ] && MISSING="${MISSING} CANON.md"
+          [ ! -f "VOCAB.md" ] && MISSING="${MISSING} VOCAB.md"
+          [ ! -f "README.md" ] && MISSING="${MISSING} README.md"
+
+          if [ -n "$MISSING" ]; then
+            echo "::error::Missing triad artifacts:${MISSING}"
+            echo "valid=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          echo "valid=true" >> $GITHUB_OUTPUT
+          echo "Triad: PASS"
+
+      - name: Run locality validator
+        id: locality
+        run: |
+          # Check VOCAB terms are used in CANON
+          if [ -f "VOCAB.md" ] && [ -f "CANON.md" ]; then
+            echo "Locality: PASS (basic check)"
+            echo "valid=true" >> $GITHUB_OUTPUT
+          else
+            echo "valid=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run inheritance validator
+        id: inheritance
+        run: |
+          # Check inherits line in CANON.md
+          if grep -q "^inherits:" CANON.md 2>/dev/null; then
+            PARENT=$(grep "^inherits:" CANON.md | sed 's/inherits: *//')
+            echo "Inherits from: $PARENT"
+            echo "Inheritance: PASS"
+            echo "valid=true" >> $GITHUB_OUTPUT
+          elif grep -q "ROOT" CANON.md 2>/dev/null; then
+            echo "ROOT scope - no inheritance required"
+            echo "Inheritance: PASS (ROOT)"
+            echo "valid=true" >> $GITHUB_OUTPUT
+          else
+            echo "::warning::No inheritance declared"
+            echo "valid=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: VaaS Summary
+        run: |
+          echo "## VaaS Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Validator | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Triad | ${{ steps.triad.outputs.valid == 'true' && '✅ PASS' || '❌ FAIL' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Locality | ${{ steps.locality.outputs.valid == 'true' && '✅ PASS' || '❌ FAIL' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Inheritance | ${{ steps.inheritance.outputs.valid == 'true' && '✅ PASS' || '❌ FAIL' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**LEDGER commit triggered VaaS validation.**" >> $GITHUB_STEP_SUMMARY

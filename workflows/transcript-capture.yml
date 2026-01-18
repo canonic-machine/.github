@@ -1,10 +1,10 @@
-name: TRANSCRIPT Capture
+name: TaaS Capture
 
 on:
   workflow_dispatch:
     inputs:
-      session_path:
-        description: 'Path to session JSONL file'
+      session_hash:
+        description: 'SHA256 hash of session file'
         required: true
         type: string
       channel:
@@ -16,6 +16,10 @@ on:
           - IDE
           - App
           - API
+      notes:
+        description: 'Optional notes about the session'
+        required: false
+        type: string
 
 jobs:
   capture:
@@ -26,28 +30,22 @@ jobs:
       - name: Get next transcript ID
         id: next_id
         run: |
-          # Find highest existing tx number
-          LAST=$(ls transcript/records/tx*.md 2>/dev/null | sed 's/.*tx0*\([0-9]*\).*/\1/' | sort -n | tail -1)
+          mkdir -p services/taas/records
+          LAST=$(ls services/taas/records/tx*.md 2>/dev/null | sed 's/.*tx0*\([0-9]*\).*/\1/' | sort -n | tail -1)
           NEXT=$((${LAST:-0} + 1))
           NEXT_PADDED=$(printf "%03d" $NEXT)
           echo "id=tx${NEXT_PADDED}" >> $GITHUB_OUTPUT
           echo "Next transcript ID: tx${NEXT_PADDED}"
 
-      - name: Calculate hash
-        id: hash
-        run: |
-          # Hash would be calculated from actual file
-          # For manual dispatch, use placeholder
-          HASH="sha256:$(echo '${{ inputs.session_path }}' | sha256sum | cut -d' ' -f1)"
-          echo "hash=${HASH}" >> $GITHUB_OUTPUT
-
-      - name: Create transcript record
+      - name: Create public transcript reference
         run: |
           DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           DATE_SHORT=$(date -u +%Y%m%d)
 
-          cat > transcript/records/${{ steps.next_id.outputs.id }}-claude-session-${DATE_SHORT}.md << EOF
-          # TRANSCRIPT RECORD - ${{ steps.next_id.outputs.id }}
+          mkdir -p services/taas/records
+
+          cat > services/taas/records/${{ steps.next_id.outputs.id }}-${DATE_SHORT}.md << EOF
+          # TRANSCRIPT REFERENCE - ${{ steps.next_id.outputs.id }}
 
           ---
 
@@ -56,29 +54,39 @@ jobs:
           - Transcript ID: ${{ steps.next_id.outputs.id }}
           - Timestamp: ${DATE}
           - Channel: ${{ inputs.channel }}
-          - Source reference: ${{ inputs.session_path }}
-          - Hash: ${{ steps.hash.outputs.hash }}
-          - Status: Recorded
-
-          ---
-
-          ## Contents
-
-          Claude ${{ inputs.channel }} session. Raw content stored privately per TRANSCRIPT Axiom 7.
+          - Hash: sha256:${{ inputs.session_hash }}
+          - Status: Referenced
 
           ---
 
           ## Notes
 
-          Captured via GitHub Actions workflow.
+          ${{ inputs.notes || 'No notes provided.' }}
+
+          ---
+
+          ## Storage
+
+          Raw content in permanent-local .transcripts/ repository.
+          This is a PUBLIC reference only.
 
           ---
           EOF
 
-      - name: Commit transcript record
+      - name: Commit transcript reference
         run: |
           git config user.name "CANONIC Bot"
           git config user.email "bot@canonic.org"
-          git add transcript/records/
-          git commit -m "TRANSCRIPT: ${{ steps.next_id.outputs.id }} captured (${{ inputs.channel }})"
+          git add services/taas/records/
+          git commit -m "TaaS: ${{ steps.next_id.outputs.id }} referenced (${{ inputs.channel }})"
           git push
+
+      - name: TaaS Summary
+        run: |
+          echo "## TaaS Capture" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| ID | ${{ steps.next_id.outputs.id }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Channel | ${{ inputs.channel }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Hash | sha256:${{ inputs.session_hash }} |" >> $GITHUB_STEP_SUMMARY
