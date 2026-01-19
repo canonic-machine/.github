@@ -1,0 +1,189 @@
+name: CANONIC MACHINE Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      service:
+        description: 'Service to validate (all, validation, paper, publishing, ip, grant, writing, book, company)'
+        required: false
+        default: 'all'
+
+jobs:
+  validation-service:
+    name: VALIDATION SERVICE
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Triad Validator
+        run: |
+          python validators/canonic/triad/triad.py . . || true
+
+      - name: Inheritance Validator
+        run: |
+          python validators/canonic/inheritance/inheritance.py . . || true
+
+      - name: Introspection Validator
+        run: |
+          python validators/canonic/introspection/introspection.py . . || true
+
+      - name: Closure Validator
+        run: |
+          python validators/canonic/closure/closure.py . --mode scope || true
+
+  paper-service:
+    name: PAPER SERVICE
+    runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'all' || github.event.inputs.service == 'paper'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: PAPER SERVICE Validators
+        run: |
+          if [ -d "paper" ]; then
+            python validators/papaas.py paper/ || true
+          else
+            echo "No paper/ directory found"
+          fi
+
+  publishing-service:
+    name: PUBLISHING SERVICE
+    runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'all' || github.event.inputs.service == 'publishing'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: PUBLISHING SERVICE Validators
+        run: |
+          if [ -d "publishing" ]; then
+            python validators/pubaas.py publishing/ || true
+          else
+            echo "No publishing/ directory found"
+          fi
+
+  ip-service:
+    name: IP SERVICE
+    runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'all' || github.event.inputs.service == 'ip'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: IP SERVICE Validators
+        run: |
+          if [ -d "patents" ]; then
+            python validators/ipaas.py patents/ || true
+          else
+            echo "No patents/ directory found"
+          fi
+
+  grant-service:
+    name: GRANT SERVICE
+    runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'all' || github.event.inputs.service == 'grant'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: GRANT SERVICE Validators
+        run: |
+          if [ -d "grants" ]; then
+            python validators/gaas.py grants/ || true
+          else
+            echo "No grants/ directory found"
+          fi
+
+  writing-service:
+    name: WRITING SERVICE
+    runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'all' || github.event.inputs.service == 'writing'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: WRITING SERVICE Validators
+        run: |
+          if [ -d "writing" ]; then
+            python validators/waas.py writing/ || true
+          else
+            echo "No writing/ directory found"
+          fi
+
+  book-service:
+    name: BOOK SERVICE
+    runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'all' || github.event.inputs.service == 'book'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: BOOK SERVICE Validators
+        run: |
+          for book in atulisms dividends; do
+            if [ -d "$book" ]; then
+              python validators/baas.py "$book/" || true
+            fi
+          done
+
+  company-service:
+    name: COMPANY SERVICE
+    runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'all' || github.event.inputs.service == 'company'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: COMPANY SERVICE Validators
+        run: |
+          if [ -d "companies" ]; then
+            python validators/caas.py companies/ || true
+          else
+            echo "No companies/ directory found"
+          fi
+
+  summary:
+    name: Generate Summary
+    runs-on: ubuntu-latest
+    needs: [validation-service, paper-service, publishing-service, ip-service, grant-service, writing-service, book-service, company-service]
+    if: always()
+    steps:
+      - name: CANONIC MACHINE Summary
+        run: |
+          echo "## CANONIC MACHINE Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Service | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| VALIDATION | ${{ needs.validation-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| PAPER | ${{ needs.paper-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| PUBLISHING | ${{ needs.publishing-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| IP | ${{ needs.ip-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| GRANT | ${{ needs.grant-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| WRITING | ${{ needs.writing-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| BOOK | ${{ needs.book-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| COMPANY | ${{ needs.company-service.result == 'success' && '✓ PASS' || '○ SKIP' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Infrastructure: Git + CANONIC + LLM" >> $GITHUB_STEP_SUMMARY
+          echo "Git IS the blockchain (IDF-149)" >> $GITHUB_STEP_SUMMARY

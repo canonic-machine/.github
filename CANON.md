@@ -2,32 +2,48 @@
 
 inherits: /canonic/machine/os/
 
+closes: /canonic/
+
 ---
 
 ## Axioms
 
-### 1. Service primitives
+### 1. Core Primitives
 
-The APPSTORE distributes services that emerge from canonification (IDF-157):
+The APPSTORE defines five irreducible primitives:
 
-**Core Services (Irreducible):**
-- **VaaS** — Validator-as-a-Service (compliance)
-- **TaaS** — Transcript-as-a-Service (evidence)
+| Primitive | Function | Instantiation |
+|-----------|----------|---------------|
+| **VaaS** | Validation | Domain.VaaS |
+| **TaaS** | Evidence | Domain.TaaS |
+| **TOKEN** | Reputation (non-transferable) | Domain.TOKEN |
+| **COIN** | Currency (transferable) | CANONIC COIN |
+| **CHAT** | Interface (LLM-driven) | Domain.CHAT |
 
-**Derived Services (Emerge from canonification):**
-- **PaaS** — Paper-as-a-Service (academic publishing)
-- **IPaaS** — IP-as-a-Service (patent production)
-- **GaaS** — Grants-as-a-Service (funding applications)
-- **WaaS** — Writing-as-a-Service (content production)
-- **CaaS** — Company-as-a-Service (entity governance)
-- **PubaaS** — Publishing-as-a-Service (release management)
-- **TypeaaS** — Typeset-as-a-Service (render pipeline)
-
-All services MUST decompose into VaaS + TaaS primitives. New services emerge through canonification of operations.
+All primitives MUST be instantiated by sublanguages. TOKEN gates COIN (IDF-159).
 
 ---
 
-### 2. Infrastructure closure
+### 2. Derived Services
+
+Services emerge from canonification of primitives (IDF-157):
+
+| Service | Primitives | Function |
+|---------|------------|----------|
+| **PapaaS** | VaaS + TaaS | Academic publishing |
+| **IPaaS** | VaaS + TaaS | Patent production |
+| **GaaS** | VaaS + TaaS | Grant applications |
+| **WaaS** | VaaS + TaaS | Content production |
+| **CaaS** | VaaS + TaaS | Entity governance |
+| **PubaaS** | VaaS + TaaS | Release management |
+| **TypeaaS** | VaaS + TaaS | Render pipeline |
+| **TokenaaS** | TOKEN + COIN | Token economics |
+
+All services decompose into primitives. New services emerge through canonification.
+
+---
+
+### 3. Infrastructure closure
 
 Git IS the state machine. CANONIC IS the process. LLM IS the executor.
 
@@ -40,7 +56,7 @@ No other infrastructure. No databases. No servers. No cron.
 
 ---
 
-### 3. Distribution via Git
+### 4. Distribution via Git
 
 GitHub IS the App Store. Git IS the blockchain.
 
@@ -52,7 +68,7 @@ GitHub IS the App Store. Git IS the blockchain.
 
 ---
 
-### 4. Ledger Categories (Visibility × Encryption)
+### 5. Ledger Categories (Visibility × Encryption)
 
 Four ledger categories via orthogonal dimensions (IDF-151):
 
@@ -78,25 +94,23 @@ Git provides the blockchain for all 4 categories. Encryption adds the privacy la
 
 ---
 
-### 5. Vertical instantiation
+### 6. Sublanguage Instantiation
 
-Services instantiate into verticals via inheritance:
+Primitives instantiate into sublanguages via inheritance:
 
-```
-VaaS + TaaS
-    └── Healthcare (FDA, HIPAA, CMS)
-    └── Legal (privilege, evidence)
-    └── Finance (SEC, audit)
-    └── Research (IRB, reproducibility)
-    └── Education (accreditation)
-    └── Government (FOIA, compliance)
-```
+| Sublanguage | TOKEN | VaaS | CHAT |
+|-------------|-------|------|------|
+| **MED** | Opts Ego | HIPAA, FDA, CMS, IRB | MammoChat, PulmoChat |
+| **LAW** | Legal Ego | Privilege, Evidence | ElderChat, IPChat |
+| **FIN** | Audit Ego | SEC, SOX, GAAP | AuditChat |
+| **EDU** | Scholar Ego | Accreditation | CourseChat |
+| **GOV** | Civic Ego | FOIA, Compliance | CivicChat |
 
-Same primitives. Different validators.
+Same primitives. Domain-specific validators. One COIN.
 
 ---
 
-### 6. Pricing tiers
+### 7. Pricing tiers
 
 Services MUST offer three tiers:
 
@@ -106,12 +120,16 @@ Services MUST offer three tiers:
 
 ---
 
-### 7. IDF coverage
+### 8. IDF coverage
 
 | Feature | IDF | Title |
 |---------|-----|-------|
 | VaaS | IDF-070 | Validator-as-a-Service Commercialization |
 | TaaS | IDF-024 | Transcript-Anchored Evidence Layer |
+| TOKEN + COIN | IDF-159 | Reputation Gates Currency |
+| CHAT | IDF-160 | Oncology Domain Closure Pattern |
+| Sublanguage | IDF-161 | Governance Programming Language |
+| Namespace | IDF-162 | CANONIC Dot Notation Namespace |
 | Distribution | IDF-136 | Self-Discovering Distribution Architecture |
 | Infrastructure | IDF-147 | Git + LLM Infrastructure Closure |
 | Cascade | IDF-148 | Axiom Change Cascade Protocol |
@@ -124,7 +142,7 @@ Services MUST offer three tiers:
 
 ---
 
-### 8. Product Catalogue
+### 9. Product Catalogue
 
 Services discovered through canonification (IDF-157):
 
@@ -236,7 +254,9 @@ Services discovered through canonification (IDF-157):
 
 ---
 
-**This CANON defines validity for the APPSTORE scope.**
+**This CANON closes CANONIC. Governance → Distribution → Tokens.**
+
+**APPSTORE closes CANONIC. CANONIC → TOKENS.**
 
 **Status: Public. Coming soon.**
 
