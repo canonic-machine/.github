@@ -31,8 +31,15 @@ LAST=$(ls "$RECORDS_DIR"/tx*.md 2>/dev/null | sed 's/.*tx0*\([0-9]*\).*/\1/' | s
 NEXT=$((${LAST:-0} + 1))
 TX_ID=$(printf "tx%03d" $NEXT)
 
-# Calculate hash
-HASH=$(sha256sum "$SESSION_PATH" | cut -d' ' -f1)
+# Calculate hash (portable)
+if command -v sha256sum >/dev/null 2>&1; then
+    HASH=$(sha256sum "$SESSION_PATH" | awk '{print $1}')
+elif command -v shasum >/dev/null 2>&1; then
+    HASH=$(shasum -a 256 "$SESSION_PATH" | awk '{print $1}')
+else
+    echo "Error: sha256sum/shasum not found"
+    exit 1
+fi
 
 # Copy to transcript mirror
 MIRROR_PATH="$TRANSCRIPT_DIR/${TX_ID}-${SESSION_FILE}"
