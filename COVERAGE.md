@@ -15,7 +15,7 @@ inherits: /canonic/
 | .github | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/ |
 | canonic | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | / |
 | language | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/ |
-| validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/ |
+| validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/os/ |
 | machine | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/ |
 | os | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/machine/ |
 | ledger | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
