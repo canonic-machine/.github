@@ -1,114 +1,144 @@
 # COVERAGE (/.github/)
 
-**Purpose:** Track internal coverage of APPSTORE axioms against implementation.
+**Purpose:** Aggregate internal coverage across ALL scopes in CANONBASE.
+
+**Generated:** 2026-01-22
+
+inherits: /canonic/
+
+---
+
+## CANONBASE Scope Survey
+
+| Scope | Tier | Triad | Spec | Coverage | Roadmap | Inherits |
+|-------|------|-------|------|----------|---------|----------|
+| .github | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/ |
+| canonic | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | / |
+| language | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/ |
+| validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/ |
+| machine | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/ |
+| os | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/machine/ |
+| ledger | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
+| stack | BUSINESS | ✓ | ✓ | - | - | / |
+| transcript | BUSINESS | ✓ | ✓ | - | - | / |
+| tutor | BUSINESS | ✓ | ✓ | - | - | / |
+| atulisms | INVALID | - | - | - | - | /canonic/machine/os/ledger/writing/ |
+| companies | INVALID | - | - | - | - | /canonic/machine/os/ledger/ |
+| dividends | INVALID | - | - | - | - | /canonic/machine/os/ledger/writing/ |
+| grants | INVALID | - | - | - | - | /canonic/machine/os/ledger/writing/ |
+| mammochat | INVALID | - | ✓ | - | - | /canonic/services/products/paper/ |
+| paper | INVALID | - | ✓ | - | - | /canonic/machine/os/ledger/writing/ |
+| patents | INVALID | - | - | - | - | /canonic/machine/os/ledger/ |
+| publishing | INVALID | - | ✓ | - | - | /canonic/machine/os/ledger/writing/paper/ |
+| writing | INVALID | - | - | - | - | /canonic/machine/os/ledger/ |
+
+---
+
+## Aggregate Metrics
+
+| Metric | Count | Percentage |
+|--------|-------|------------|
+| **Total Scopes** | 19 | 100% |
+| **ENTERPRISE** | 4 | 21% |
+| **BUSINESS** | 6 | 32% |
+| **COMMUNITY** | 0 | 0% |
+| **INVALID** | 9 | 47% |
+
+---
+
+## Compliance Gap Analysis
+
+### ENTERPRISE Gaps
+
+| Scope | Missing | Priority |
+|-------|---------|----------|
+| machine | ROADMAP.md | High |
+| os | ROADMAP.md | High |
+| ledger | ROADMAP.md | High |
+| stack | COVERAGE.md, ROADMAP.md | Medium |
+| transcript | COVERAGE.md, ROADMAP.md | Medium |
+| tutor | COVERAGE.md, ROADMAP.md | Medium |
+
+### COMMUNITY Gaps (Missing Triad)
+
+| Scope | Missing | Priority |
+|-------|---------|----------|
+| atulisms | CANON.md, VOCAB.md, README.md | Low |
+| companies | CANON.md, VOCAB.md, README.md | Medium |
+| dividends | CANON.md, VOCAB.md, README.md | Low |
+| grants | CANON.md, VOCAB.md, README.md | Medium |
+| mammochat | CANON.md, VOCAB.md, README.md | High |
+| paper | CANON.md, VOCAB.md, README.md | High |
+| patents | CANON.md, VOCAB.md, README.md | Medium |
+| publishing | CANON.md, VOCAB.md, README.md | Medium |
+| writing | CANON.md, VOCAB.md, README.md | Medium |
 
 ---
 
 ## Axiom Coverage Matrix
 
-| Axiom | Implementation | Status | Validator |
-|-------|----------------|--------|-----------|
-| Axiom 1: GitHub IS the App Store | GitHub platform exclusive | Complete | Manual |
-| Axiom 2: Zero Infrastructure | No custom infra | Complete | Manual |
-| Axiom 3: Validator Distribution | GitHub Actions | Partial | validate-*.yml |
-| Axiom 4: Services Non-Governing | SERVICES structure | Complete | Manual |
-| Axiom 5: Apps Instantiation | Inheritance templates | Complete | inheritance.py |
+### Axiom 0: Triad
+
+| Status | Count | Scopes |
+|--------|-------|--------|
+| PASS | 10 | .github, canonic, language, validators, machine, os, ledger, stack, transcript, tutor |
+| FAIL | 9 | atulisms, companies, dividends, grants, mammochat, paper, patents, publishing, writing |
+
+### Axiom 1: Inheritance
+
+| Status | Count | Scopes |
+|--------|-------|--------|
+| PASS | 10 | All scopes with triad declare inherits |
+| CHAINS | 5 | Distinct inheritance chains terminate at / |
+
+### Axiom 2: Introspection
+
+| Status | Count | Notes |
+|--------|-------|-------|
+| PASS | 10 | VOCAB defines all CANON concepts |
+| UNTESTED | 9 | No triad to validate |
 
 ---
 
-## Internal Specification Coverage
+## VALIDATORS Distribution
 
-### 1. VALIDATORS Distribution
-
-**Coverage:**
-- [x] Validator interface defined (exit codes 0/1/2)
-- [x] Output format specified
-- [ ] GitHub Actions workflows deployed
-- [ ] Badge generation system
-
-**Status:** Partial (workflows pending)
+| Validator | GitHub Action | Status |
+|-----------|---------------|--------|
+| triad | validate-triad.yml | ✓ Deployed |
+| inheritance | validate-inheritance.yml | ✓ Deployed |
+| introspection | validate-introspection.yml | ✓ Deployed |
+| composite | validate.yml | ✓ Deployed |
 
 ---
 
-### 2. SERVICES Structure
+## Pre-Commit Hook Coverage
 
-**Coverage:**
-- [x] products/ template structure
-- [x] distribution/ publishing templates
-- [x] protection/ IP templates
-- [ ] economics/ token templates
-- [x] writing/ content templates
-
-**Status:** Partial (economics pending)
+| Scope | Hooks Configured | Validation |
+|-------|------------------|------------|
+| All 18 git repos | ✓ | ledger/.githooks/ |
 
 ---
 
-### 3. APPS Instantiation
+## Internal Closure Status
 
-**Coverage:**
-- [x] Inheritance declaration pattern
-- [x] Triad requirement
-- [x] Template inheritance from SERVICES
-- [x] Domain-specific extensions
+**Coverage:** 53% (10/19 scopes have valid triad)
 
-**Status:** Complete
+**Critical Gaps:**
+1. 9 scopes missing governance triad
+2. 6 BUSINESS scopes need ENTERPRISE upgrade
+3. Inheritance chains validated but some scopes unreachable
 
----
-
-### 4. GitHub Integration
-
-**Coverage:**
-- [x] Repository structure
-- [ ] GitHub Actions workflows
-- [ ] GitHub Marketplace listing
-- [ ] Badge API integration
-
-**Status:** Partial (Marketplace pending)
-
----
-
-## Gap Analysis
-
-| Component | Internal Gap | Priority | Resolution |
-|-----------|--------------|----------|------------|
-| GitHub Actions | Workflows not deployed | High | Deploy validate-*.yml |
-| economics/ | Token templates missing | Medium | Create TOKEN/COIN templates |
-| Marketplace | Not listed | Low | Apply after beta |
-| Badges | API not integrated | Medium | Implement badge service |
-
-**Internal Gaps:** 4
+**Next Actions:**
+1. Add triads to INVALID scopes (priority: paper, mammochat, companies)
+2. Add ROADMAP.md to machine, os, ledger
+3. Add COVERAGE.md + ROADMAP.md to stack, transcript, tutor
 
 ---
 
 ## Self-Governance
 
-### APPSTORE Scope Compliance
+This COVERAGE.md aggregates across **ALL 19 scopes** in CANONBASE per Axiom 6 (CANONBASE Aggregate).
 
-**Triad:**
-- [x] CANON.md exists
-- [x] VOCAB.md exists
-- [x] README.md exists
-
-**Enterprise Hexad:**
-- [x] SPEC (APPSTORE.md)
-- [x] Triad (CANON, VOCAB, README)
-- [x] COVERAGE.md (this file)
-- [x] ROADMAP.md
-
-**Compliance Level:** ENTERPRISE
-
----
-
-## Conclusion
-
-**Internal Coverage:** 75%
-
-APPSTORE has achieved ENTERPRISE compliance structure. Remaining gaps:
-1. GitHub Actions deployment
-2. economics/ SERVICES templates
-3. GitHub Marketplace listing
-4. Badge API integration
-
-**Next:** ROADMAP.md tracks external integration milestones.
+**Compliance Level:** ENTERPRISE (this scope)
 
 ---

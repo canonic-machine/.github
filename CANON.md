@@ -64,6 +64,17 @@ APPS are instantiated products with full CANONIC governance.
 
 ---
 
+### 6. CANONBASE Aggregate
+
+APPSTORE **IS** the CANONBASE.
+
+COVERAGE.md **MUST** aggregate internal coverage across ALL scopes.
+ROADMAP.md **MUST** aggregate external integration across ALL scopes.
+
+APPSTORE provides the unified view of the entire multi-repo stack.
+
+---
+
 **This CANON defines validity for the APPSTORE scope.**
 
 ---

@@ -74,6 +74,22 @@ The axiom that SERVICES produce artifacts but do not modify CANON.
 
 The axiom that APPS inherit from SERVICES templates.
 
+### CANONBASE
+
+The root workspace containing all scopes in the multi-repo stack. APPSTORE IS the CANONBASE.
+
+### CANONBASE aggregate
+
+The axiom that APPSTORE COVERAGE and ROADMAP aggregate across ALL scopes in the workspace.
+
+### scope
+
+A governed directory containing at minimum a triad (CANON.md, VOCAB.md, README.md).
+
+### multi-repo stack
+
+Multiple git repositories composing a single CANONIC governance system.
+
 ---
 
 **This VOCAB defines terms for the APPSTORE scope.**
