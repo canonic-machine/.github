@@ -1,0 +1,88 @@
+# Axiom 2: Introspection Validation
+# VOCAB.md MUST define every concept used in CANON.md
+#
+name: Validate Introspection
+
+on:
+  push:
+    paths:
+      - '**/CANON.md'
+      - '**/VOCAB.md'
+  pull_request:
+    paths:
+      - '**/CANON.md'
+      - '**/VOCAB.md'
+
+jobs:
+  introspection:
+    name: Axiom 2 - Introspection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate Introspection
+        run: |
+          echo "=== Axiom 2: Introspection Validation ==="
+
+          python3 << 'VALIDATOR'
+          import re
+          import sys
+          from pathlib import Path
+
+          def normalize(term):
+              return ' '.join(term.strip().lower().split())
+
+          def extract_terms(vocab_path):
+              terms = set()
+              if not vocab_path.exists():
+                  return terms
+              text = vocab_path.read_text()
+              # Extract ### headings as term definitions
+              for match in re.finditer(r'^###\s+(.+)$', text, re.MULTILINE):
+                  terms.add(normalize(match.group(1)))
+              return terms
+
+          def extract_concepts(canon_path):
+              concepts = set()
+              if not canon_path.exists():
+                  return concepts
+              text = canon_path.read_text()
+              # Extract backticked terms
+              for match in re.finditer(r'`([^`]+)`', text):
+                  token = match.group(1).strip()
+                  if '/' in token or '{' in token:
+                      continue
+                  if token.endswith('.md'):
+                      token = token[:-3]
+                  if re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]*', token):
+                      concepts.add(normalize(token))
+              return concepts
+
+          fail = 0
+          for canon in Path('.').rglob('CANON.md'):
+              if '.git' in canon.parts or '.archive' in canon.parts:
+                  continue
+              scope = canon.parent
+              vocab = scope / 'VOCAB.md'
+              if not vocab.exists():
+                  print(f"FAIL: {scope} - MISSING VOCAB.md")
+                  fail = 1
+                  continue
+
+              defined = extract_terms(vocab)
+              used = extract_concepts(canon)
+              undefined = used - defined
+
+              if undefined:
+                  print(f"FAIL: {scope} - UNDEFINED: {', '.join(sorted(undefined))}")
+                  fail = 1
+              else:
+                  print(f"PASS: {scope}")
+
+          sys.exit(fail)
+          VALIDATOR

@@ -1,0 +1,53 @@
+# Axiom 1: Inheritance Validation
+# CANON.md MUST declare inherits:, chain terminates at /
+#
+name: Validate Inheritance
+
+on:
+  push:
+    paths:
+      - '**/CANON.md'
+  pull_request:
+    paths:
+      - '**/CANON.md'
+
+jobs:
+  inheritance:
+    name: Axiom 1 - Inheritance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Inheritance
+        run: |
+          echo "=== Axiom 1: Inheritance Validation ==="
+          FAIL=0
+
+          check_inheritance() {
+            local file="$1"
+            local inherits=$(grep -E '^inherits:\s*' "$file" | sed 's/^inherits:\s*//' | tr -d '[:space:]')
+
+            if [ -z "$inherits" ]; then
+              echo "FAIL: $file - NO_INHERITS declaration"
+              return 1
+            fi
+
+            if [[ ! "$inherits" =~ ^/ ]]; then
+              echo "FAIL: $file - INHERITS_NOT_ABSOLUTE: $inherits"
+              return 1
+            fi
+
+            if [ "$inherits" != "/" ] && [[ ! "$inherits" =~ /$ ]]; then
+              echo "FAIL: $file - INHERITS_NOT_TERMINATED: $inherits"
+              return 1
+            fi
+
+            echo "PASS: $file -> $inherits"
+            return 0
+          }
+
+          for canon in $(find . -name CANON.md -not -path './.git/*' -not -path './.archive/*'); do
+            check_inheritance "$canon" || FAIL=1
+          done
+
+          exit $FAIL

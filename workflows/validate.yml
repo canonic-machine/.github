@@ -1,0 +1,78 @@
+# CANONIC Validation Workflow
+# Runs Validator-as-a-Service on push and pull request
+#
+# Per APPSTORE.md: Validators MUST be distributed as GitHub Actions workflows
+#
+name: CANONIC Validate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+env:
+  CANONIC_COMPLIANCE_LEVEL: community
+
+jobs:
+  validate:
+    name: Validate CANONIC Axioms
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout validators
+        uses: actions/checkout@v4
+        with:
+          repository: canonic-machine/validators
+          path: .validators
+          token: ${{ secrets.VALIDATORS_TOKEN }}
+        continue-on-error: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run CANONIC Validators
+        run: |
+          echo "=== CANONIC Validation ==="
+          echo "Repository: ${{ github.repository }}"
+          echo "Compliance: $CANONIC_COMPLIANCE_LEVEL"
+          echo ""
+
+          # Check if validators are available
+          if [ -d ".validators/canonic" ]; then
+            echo "Using checked-out validators"
+            python3 .validators/canonic/validator_as_a_service.py .
+          elif [ -d "validators/canonic" ]; then
+            echo "Using local validators"
+            python3 validators/canonic/validator_as_a_service.py .
+          else
+            echo "Validators not found - running basic triad check"
+            # Fallback: basic governance check
+            if [ -f "CANON.md" ] && [ -f "VOCAB.md" ] && [ -f "README.md" ]; then
+              echo "TRIAD: PRESENT"
+              exit 0
+            else
+              echo "TRIAD: MISSING required governance files"
+              [ ! -f "CANON.md" ] && echo "  Missing: CANON.md"
+              [ ! -f "VOCAB.md" ] && echo "  Missing: VOCAB.md"
+              [ ! -f "README.md" ] && echo "  Missing: README.md"
+              exit 1
+            fi
+          fi
+
+      - name: Generate badge
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "CANONIC_BADGE=passing" >> $GITHUB_ENV
+          else
+            echo "CANONIC_BADGE=failing" >> $GITHUB_ENV
+          fi

@@ -1,0 +1,63 @@
+# Axiom 0: Triad Validation
+# Scope MUST contain: CANON.md, VOCAB.md, README.md
+#
+name: Validate Triad
+
+on:
+  push:
+    paths:
+      - 'CANON.md'
+      - 'VOCAB.md'
+      - 'README.md'
+      - '**/CANON.md'
+      - '**/VOCAB.md'
+      - '**/README.md'
+  pull_request:
+    paths:
+      - 'CANON.md'
+      - 'VOCAB.md'
+      - 'README.md'
+      - '**/CANON.md'
+      - '**/VOCAB.md'
+      - '**/README.md'
+
+jobs:
+  triad:
+    name: Axiom 0 - Triad
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Triad
+        run: |
+          echo "=== Axiom 0: Triad Validation ==="
+          FAIL=0
+
+          check_triad() {
+            local dir="$1"
+            local missing=""
+            [ ! -f "$dir/CANON.md" ] && missing="$missing CANON.md"
+            [ ! -f "$dir/VOCAB.md" ] && missing="$missing VOCAB.md"
+            [ ! -f "$dir/README.md" ] && missing="$missing README.md"
+
+            if [ -n "$missing" ]; then
+              echo "FAIL: $dir - Missing:$missing"
+              return 1
+            else
+              echo "PASS: $dir"
+              return 0
+            fi
+          }
+
+          # Check root
+          if [ -f "CANON.md" ]; then
+            check_triad "." || FAIL=1
+          fi
+
+          # Check subdirectories with CANON.md
+          for canon in $(find . -name CANON.md -not -path './.git/*' -not -path './.archive/*'); do
+            dir=$(dirname "$canon")
+            check_triad "$dir" || FAIL=1
+          done
+
+          exit $FAIL
