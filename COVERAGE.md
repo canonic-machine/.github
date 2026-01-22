@@ -13,12 +13,12 @@ inherits: /canonic/
 | Scope | Tier | Triad | Spec | Coverage | Roadmap | Freeze | Inherits |
 |-------|------|-------|------|----------|---------|--------|----------|
 | .github | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/ |
-| .transcripts | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ |
+| .transcripts | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
 | canonic | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | / |
 | machine | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /canonic/ |
 | os | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /canonic/machine/ |
 | language | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/ |
-| language/templates | BUSINESS | ✓ | ✓ | - | - | - | /canonic/language/ |
+| language/templates | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/language/ |
 | validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
 | ledger | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
 | stack | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | / |
@@ -27,20 +27,20 @@ inherits: /canonic/
 | paper | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
 | mammochat | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/services/products/paper/ |
 | companies | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
-| companies/foundation | BUSINESS | ✓ | ✓ | - | - | - | /companies/ |
-| companies/foundation/assets | BUSINESS | ✓ | ✓ | - | - | - | /companies/foundation/ |
-| companies/onconex | BUSINESS | ✓ | ✓ | - | - | - | /companies/ |
-| companies/onconex/us | BUSINESS | ✓ | ✓ | - | - | - | /companies/onconex/ |
-| companies/onconex/eu | BUSINESS | ✓ | ✓ | - | - | - | /companies/onconex/ |
-| publishing | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/paper/ |
-| atulisms | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
-| books | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
-| coin | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
-| dividends | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
-| grants | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
-| patents | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
-| token | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
-| writing | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
+| companies/foundation | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/ |
+| companies/foundation/assets | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/foundation/ |
+| companies/onconex | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/ |
+| companies/onconex/us | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/onconex/ |
+| companies/onconex/eu | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/onconex/ |
+| publishing | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/paper/ |
+| atulisms | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
+| books | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
+| coin | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
+| dividends | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
+| grants | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
+| patents | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
+| token | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
+| writing | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
 
 ---
 
@@ -49,8 +49,8 @@ inherits: /canonic/
 | Metric | Count | Percentage |
 |--------|-------|------------|
 | **Total Scopes** | 29 | 100% |
-| **ENTERPRISE** | 14 | 48% |
-| **BUSINESS** | 15 | 52% |
+| **ENTERPRISE** | 29 | 100% |
+| **BUSINESS** | 0 | 0% |
 | **COMMUNITY** | 0 | 0% |
 | **INVALID** | 0 | 0% |
 | **FROZEN** | 3 | 10% |
@@ -71,30 +71,23 @@ inherits: /canonic/
 
 ## Compliance Gap Analysis
 
-### ENTERPRISE Gaps (BUSINESS scopes missing COVERAGE + ROADMAP)
+### ENTERPRISE Gaps
 
-| Scope | Missing | Priority |
-|-------|---------|----------|
-| .transcripts | COVERAGE.md, ROADMAP.md | Low |
-| language/templates | COVERAGE.md, ROADMAP.md | Low |
-| companies/foundation | COVERAGE.md, ROADMAP.md | Medium |
-| companies/foundation/assets | COVERAGE.md, ROADMAP.md | Low |
-| companies/onconex | COVERAGE.md, ROADMAP.md | Medium |
-| companies/onconex/us | COVERAGE.md, ROADMAP.md | Medium |
-| companies/onconex/eu | COVERAGE.md, ROADMAP.md | Medium |
-| publishing | COVERAGE.md, ROADMAP.md | Medium |
-| atulisms | COVERAGE.md, ROADMAP.md | Low |
-| books | COVERAGE.md, ROADMAP.md | Low |
-| coin | COVERAGE.md, ROADMAP.md | Medium |
-| dividends | COVERAGE.md, ROADMAP.md | Low |
-| grants | COVERAGE.md, ROADMAP.md | Medium |
-| patents | COVERAGE.md, ROADMAP.md | High |
-| token | COVERAGE.md, ROADMAP.md | Medium |
-| writing | COVERAGE.md, ROADMAP.md | Low |
+**All 29 scopes are now at ENTERPRISE compliance. 0 gaps remaining.**
 
-### BUSINESS Gaps (Missing Spec)
+### Completed Upgrades
 
-All former COMMUNITY scopes now have SPECs. **0 gaps remaining.**
+| Scope | Status | Notes |
+|-------|--------|-------|
+| All 15 former BUSINESS scopes | ✓ ENTERPRISE | COVERAGE + ROADMAP added |
+
+### BUSINESS Gaps
+
+**0 BUSINESS scopes remaining. All upgraded to ENTERPRISE.**
+
+### COMMUNITY Gaps
+
+**0 COMMUNITY scopes remaining. All upgraded through BUSINESS to ENTERPRISE.**
 
 ---
 
@@ -157,9 +150,9 @@ All former COMMUNITY scopes now have SPECs. **0 gaps remaining.**
 
 **Coverage:** 100% (29/29 scopes have valid triad)
 
-**ENTERPRISE:** 48% (14/29 scopes)
+**ENTERPRISE:** 100% (29/29 scopes)
 
-**BUSINESS:** 52% (15/29 scopes)
+**BUSINESS:** 0% (0/29 scopes)
 
 **COMMUNITY:** 0% (0/29 scopes)
 
@@ -168,11 +161,9 @@ All former COMMUNITY scopes now have SPECs. **0 gaps remaining.**
 **Completed Work:**
 1. ✓ All 29 scopes have valid triads
 2. ✓ All 15 former COMMUNITY scopes upgraded to BUSINESS (SPECs added)
+3. ✓ All 15 former BUSINESS scopes upgraded to ENTERPRISE (COVERAGE + ROADMAP added)
 
-**Remaining Work:**
-1. Add COVERAGE + ROADMAP to 15 BUSINESS scopes for ENTERPRISE tier
-
-**Next Milestone:** v1.0 - All scopes ENTERPRISE
+**Status:** v1.0 ACHIEVED - All scopes ENTERPRISE
 
 ---
 
