@@ -16,21 +16,24 @@ inherits: /canonic/
 | canonic | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | / |
 | language | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/ |
 | validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/os/ |
-| machine | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/ |
-| os | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/machine/ |
-| ledger | BUSINESS | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
-| stack | BUSINESS | ✓ | ✓ | - | - | / |
-| transcript | BUSINESS | ✓ | ✓ | - | - | / |
-| tutor | BUSINESS | ✓ | ✓ | - | - | / |
-| atulisms | INVALID | - | - | - | - | /canonic/machine/os/ledger/writing/ |
-| companies | INVALID | - | - | - | - | /canonic/machine/os/ledger/ |
-| dividends | INVALID | - | - | - | - | /canonic/machine/os/ledger/writing/ |
-| grants | INVALID | - | - | - | - | /canonic/machine/os/ledger/writing/ |
-| mammochat | INVALID | - | ✓ | - | - | /canonic/services/products/paper/ |
-| paper | INVALID | - | ✓ | - | - | /canonic/machine/os/ledger/writing/ |
-| patents | INVALID | - | - | - | - | /canonic/machine/os/ledger/ |
-| publishing | INVALID | - | ✓ | - | - | /canonic/machine/os/ledger/writing/paper/ |
-| writing | INVALID | - | - | - | - | /canonic/machine/os/ledger/ |
+| machine | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/ |
+| os | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/ |
+| ledger | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/os/ |
+| stack | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | / |
+| transcript | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | / |
+| tutor | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | / |
+| paper | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/os/ledger/writing/ |
+| mammochat | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/services/products/paper/ |
+| companies | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | /canonic/machine/os/ledger/ |
+| publishing | BUSINESS | ✓ | ✓ | - | - | /canonic/machine/os/ledger/writing/paper/ |
+| atulisms | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| books | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| coin | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/ |
+| dividends | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| grants | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| patents | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/ |
+| token | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/ |
+| writing | COMMUNITY | ✓ | - | - | - | /canonic/machine/os/ledger/ |
 
 ---
 
@@ -38,11 +41,11 @@ inherits: /canonic/
 
 | Metric | Count | Percentage |
 |--------|-------|------------|
-| **Total Scopes** | 19 | 100% |
-| **ENTERPRISE** | 4 | 21% |
-| **BUSINESS** | 6 | 32% |
-| **COMMUNITY** | 0 | 0% |
-| **INVALID** | 9 | 47% |
+| **Total Scopes** | 22 | 100% |
+| **ENTERPRISE** | 13 | 59% |
+| **BUSINESS** | 1 | 5% |
+| **COMMUNITY** | 8 | 36% |
+| **INVALID** | 0 | 0% |
 
 ---
 
@@ -52,26 +55,20 @@ inherits: /canonic/
 
 | Scope | Missing | Priority |
 |-------|---------|----------|
-| machine | ROADMAP.md | High |
-| os | ROADMAP.md | High |
-| ledger | ROADMAP.md | High |
-| stack | COVERAGE.md, ROADMAP.md | Medium |
-| transcript | COVERAGE.md, ROADMAP.md | Medium |
-| tutor | COVERAGE.md, ROADMAP.md | Medium |
+| publishing | COVERAGE.md, ROADMAP.md | Medium |
 
-### COMMUNITY Gaps (Missing Triad)
+### BUSINESS Gaps (Missing Spec)
 
 | Scope | Missing | Priority |
 |-------|---------|----------|
-| atulisms | CANON.md, VOCAB.md, README.md | Low |
-| companies | CANON.md, VOCAB.md, README.md | Medium |
-| dividends | CANON.md, VOCAB.md, README.md | Low |
-| grants | CANON.md, VOCAB.md, README.md | Medium |
-| mammochat | CANON.md, VOCAB.md, README.md | High |
-| paper | CANON.md, VOCAB.md, README.md | High |
-| patents | CANON.md, VOCAB.md, README.md | Medium |
-| publishing | CANON.md, VOCAB.md, README.md | Medium |
-| writing | CANON.md, VOCAB.md, README.md | Medium |
+| atulisms | ATULISMS.md | Low |
+| books | BOOKS.md | Low |
+| coin | COIN.md | Medium |
+| dividends | DIVIDENDS.md | Low |
+| grants | GRANTS.md | Medium |
+| patents | PATENTS.md | Medium |
+| token | TOKEN.md | Medium |
+| writing | WRITING.md | Low |
 
 ---
 
@@ -81,22 +78,22 @@ inherits: /canonic/
 
 | Status | Count | Scopes |
 |--------|-------|--------|
-| PASS | 10 | .github, canonic, language, validators, machine, os, ledger, stack, transcript, tutor |
-| FAIL | 9 | atulisms, companies, dividends, grants, mammochat, paper, patents, publishing, writing |
+| PASS | 22 | ALL SCOPES |
+| FAIL | 0 | - |
 
 ### Axiom 1: Inheritance
 
 | Status | Count | Scopes |
 |--------|-------|--------|
-| PASS | 10 | All scopes with triad declare inherits |
+| PASS | 22 | All scopes declare inherits in CANON.md |
 | CHAINS | 5 | Distinct inheritance chains terminate at / |
 
 ### Axiom 2: Introspection
 
 | Status | Count | Notes |
 |--------|-------|-------|
-| PASS | 10 | VOCAB defines all CANON concepts |
-| UNTESTED | 9 | No triad to validate |
+| PASS | 22 | All VOCAB defines CANON concepts |
+| FAIL | 0 | - |
 
 ---
 
@@ -115,30 +112,30 @@ inherits: /canonic/
 
 | Scope | Hooks Configured | Validation |
 |-------|------------------|------------|
-| All 18 git repos | ✓ | ledger/.githooks/ |
+| All 22 git repos | ✓ | ledger/.githooks/ |
 
 ---
 
 ## Internal Closure Status
 
-**Coverage:** 53% (10/19 scopes have valid triad)
+**Coverage:** 100% (22/22 scopes have valid triad)
 
-**Critical Gaps:**
-1. 9 scopes missing governance triad
-2. 6 BUSINESS scopes need ENTERPRISE upgrade
-3. Inheritance chains validated but some scopes unreachable
+**ENTERPRISE:** 59% (13/22 scopes)
 
-**Next Actions:**
-1. Add triads to INVALID scopes (priority: paper, mammochat, companies)
-2. Add ROADMAP.md to machine, os, ledger
-3. Add COVERAGE.md + ROADMAP.md to stack, transcript, tutor
+**Remaining Work:**
+1. Add SPEC to 8 COMMUNITY scopes for BUSINESS tier
+2. Add COVERAGE + ROADMAP to publishing and COMMUNITY scopes for ENTERPRISE tier
+
+**Next Milestone:** v1.0 - All scopes ENTERPRISE
 
 ---
 
 ## Self-Governance
 
-This COVERAGE.md aggregates across **ALL 19 scopes** in CANONBASE per Axiom 6 (CANONBASE Aggregate).
+This COVERAGE.md aggregates across **ALL 22 scopes** in CANONBASE per Axiom 6 (CANONBASE Aggregate).
 
 **Compliance Level:** ENTERPRISE (this scope)
+
+**Triad Coverage:** 100%
 
 ---
