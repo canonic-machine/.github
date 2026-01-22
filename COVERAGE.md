@@ -13,12 +13,12 @@ inherits: /canonic/
 | Scope | Tier | Triad | Spec | Coverage | Roadmap | Freeze | Inherits |
 |-------|------|-------|------|----------|---------|--------|----------|
 | .github | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/ |
-| .transcripts | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ |
+| .transcripts | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ |
 | canonic | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | / |
 | machine | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /canonic/ |
 | os | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /canonic/machine/ |
 | language | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/ |
-| language/templates | COMMUNITY | ✓ | - | - | - | - | /canonic/language/ |
+| language/templates | BUSINESS | ✓ | ✓ | - | - | - | /canonic/language/ |
 | validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
 | ledger | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
 | stack | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | / |
@@ -27,20 +27,20 @@ inherits: /canonic/
 | paper | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
 | mammochat | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/services/products/paper/ |
 | companies | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
-| companies/foundation | COMMUNITY | ✓ | - | - | - | - | /companies/ |
-| companies/foundation/assets | COMMUNITY | ✓ | - | - | - | - | /companies/foundation/ |
-| companies/onconex | COMMUNITY | ✓ | - | - | - | - | /companies/ |
-| companies/onconex/us | COMMUNITY | ✓ | - | - | - | - | /companies/onconex/ |
-| companies/onconex/eu | COMMUNITY | ✓ | - | - | - | - | /companies/onconex/ |
+| companies/foundation | BUSINESS | ✓ | ✓ | - | - | - | /companies/ |
+| companies/foundation/assets | BUSINESS | ✓ | ✓ | - | - | - | /companies/foundation/ |
+| companies/onconex | BUSINESS | ✓ | ✓ | - | - | - | /companies/ |
+| companies/onconex/us | BUSINESS | ✓ | ✓ | - | - | - | /companies/onconex/ |
+| companies/onconex/eu | BUSINESS | ✓ | ✓ | - | - | - | /companies/onconex/ |
 | publishing | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/paper/ |
-| atulisms | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/writing/ |
-| books | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/writing/ |
-| coin | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/ |
-| dividends | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/writing/ |
-| grants | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/writing/ |
-| patents | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/ |
-| token | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/ |
-| writing | COMMUNITY | ✓ | - | - | - | - | /canonic/machine/os/ledger/ |
+| atulisms | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| books | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| coin | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
+| dividends | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| grants | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/writing/ |
+| patents | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
+| token | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
+| writing | BUSINESS | ✓ | ✓ | - | - | - | /canonic/machine/os/ledger/ |
 
 ---
 
@@ -50,8 +50,8 @@ inherits: /canonic/
 |--------|-------|------------|
 | **Total Scopes** | 29 | 100% |
 | **ENTERPRISE** | 14 | 48% |
-| **BUSINESS** | 1 | 3% |
-| **COMMUNITY** | 14 | 48% |
+| **BUSINESS** | 15 | 52% |
+| **COMMUNITY** | 0 | 0% |
 | **INVALID** | 0 | 0% |
 | **FROZEN** | 3 | 10% |
 
@@ -71,31 +71,30 @@ inherits: /canonic/
 
 ## Compliance Gap Analysis
 
-### ENTERPRISE Gaps
+### ENTERPRISE Gaps (BUSINESS scopes missing COVERAGE + ROADMAP)
 
 | Scope | Missing | Priority |
 |-------|---------|----------|
+| .transcripts | COVERAGE.md, ROADMAP.md | Low |
+| language/templates | COVERAGE.md, ROADMAP.md | Low |
+| companies/foundation | COVERAGE.md, ROADMAP.md | Medium |
+| companies/foundation/assets | COVERAGE.md, ROADMAP.md | Low |
+| companies/onconex | COVERAGE.md, ROADMAP.md | Medium |
+| companies/onconex/us | COVERAGE.md, ROADMAP.md | Medium |
+| companies/onconex/eu | COVERAGE.md, ROADMAP.md | Medium |
 | publishing | COVERAGE.md, ROADMAP.md | Medium |
+| atulisms | COVERAGE.md, ROADMAP.md | Low |
+| books | COVERAGE.md, ROADMAP.md | Low |
+| coin | COVERAGE.md, ROADMAP.md | Medium |
+| dividends | COVERAGE.md, ROADMAP.md | Low |
+| grants | COVERAGE.md, ROADMAP.md | Medium |
+| patents | COVERAGE.md, ROADMAP.md | High |
+| token | COVERAGE.md, ROADMAP.md | Medium |
+| writing | COVERAGE.md, ROADMAP.md | Low |
 
 ### BUSINESS Gaps (Missing Spec)
 
-| Scope | Missing | Priority |
-|-------|---------|----------|
-| .transcripts | TRANSCRIPTS.md | Low |
-| language/templates | TEMPLATES.md | Low |
-| companies/foundation | FOUNDATION.md | Low |
-| companies/foundation/assets | ASSETS.md | Low |
-| companies/onconex | (has CANON only) | Low |
-| companies/onconex/us | (has CANON only) | Low |
-| companies/onconex/eu | (has CANON only) | Low |
-| atulisms | ATULISMS.md | Low |
-| books | BOOKS.md | Low |
-| coin | COIN.md | Medium |
-| dividends | DIVIDENDS.md | Low |
-| grants | GRANTS.md | Medium |
-| patents | PATENTS.md | Medium |
-| token | TOKEN.md | Medium |
-| writing | WRITING.md | Low |
+All former COMMUNITY scopes now have SPECs. **0 gaps remaining.**
 
 ---
 
@@ -160,11 +159,18 @@ inherits: /canonic/
 
 **ENTERPRISE:** 48% (14/29 scopes)
 
+**BUSINESS:** 52% (15/29 scopes)
+
+**COMMUNITY:** 0% (0/29 scopes)
+
 **FROZEN:** 10% (3/29 scopes) - canonic, machine, os
 
+**Completed Work:**
+1. ✓ All 29 scopes have valid triads
+2. ✓ All 15 former COMMUNITY scopes upgraded to BUSINESS (SPECs added)
+
 **Remaining Work:**
-1. Add SPEC to 15 COMMUNITY scopes for BUSINESS tier
-2. Add COVERAGE + ROADMAP for ENTERPRISE tier
+1. Add COVERAGE + ROADMAP to 15 BUSINESS scopes for ENTERPRISE tier
 
 **Next Milestone:** v1.0 - All scopes ENTERPRISE
 
