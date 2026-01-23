@@ -178,6 +178,38 @@ inherits: /CANONIC/
 
 ---
 
+## Domain Roadmap Aggregation
+
+**Pattern:** Domains have no .git. Their roadmaps aggregate here via README mirrors.
+
+```
+DOMAIN/
+├── README.md          ← Aggregates domain roadmap
+├── ROADMAP.md         ← Domain-specific milestones
+└── operations/        ← Inherits from APPSTORE/operations/
+```
+
+**.github mirrors ALL domains:**
+
+| Domain | Operations | README | ROADMAP | Status |
+|--------|------------|--------|---------|--------|
+| MEDICINE | credentialing, therapy | ✓ | ✓ | Active |
+| EDUCATION | tutoring | ✓ | ✓ | Active |
+| PRODUCTION | writing | ✓ | ✓ | Planned |
+| LAW | credentialing | — | — | Planned |
+| ECONOMICS | token, coin | ✓ | ✓ | Active |
+| BUSINESS | companies, grants | ✓ | ✓ | Active |
+
+**Pre/Post BIG BANG:**
+
+| Phase | Domains | Operations | COIN |
+|-------|---------|------------|------|
+| PRE-BIG BANG | Building | Designing | Creator-controlled |
+| BIG BANG | Operational | Live | Distributed |
+| POST-BIG BANG | Scaling | All active | Appreciating |
+
+---
+
 ## Conclusion
 
 **CANONBASE External Closure:** On Track
@@ -189,14 +221,18 @@ inherits: /CANONIC/
 - 14 COMMUNITY (48%)
 - 3 FROZEN (canonic, machine, os)
 - VaaS: 29 PASS / 0 FAIL
+- Operations: 5 abstract (credentialing, writing, tutoring, therapy, transcribing)
+- Economics: Pre-BIG BANG (21M COIN creator-controlled)
 
 **Next Milestones:**
-1. Add SPEC to 14 COMMUNITY scopes → BUSINESS
-2. Add COVERAGE + ROADMAP → ENTERPRISE
-3. Publish Paper v1.0 (arXiv)
-4. File initial patents (USPTO)
-5. Launch GitHub Marketplace listing
+1. Complete 100M word corpus → BIG BANG trigger
+2. Add SPEC to 14 COMMUNITY scopes → BUSINESS
+3. Add COVERAGE + ROADMAP → ENTERPRISE
+4. Publish Paper v1.0 (arXiv)
+5. File initial patents (USPTO)
+6. Launch GitHub Marketplace listing
+7. COIN Genesis round (Post-BIG BANG)
 
-**v1.0 Target:** All 29 scopes at ENTERPRISE compliance with external publications complete.
+**v1.0 Target:** All 29 scopes at ENTERPRISE compliance with external publications complete. BIG BANG achieved.
 
 ---
