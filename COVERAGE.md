@@ -4,7 +4,7 @@
 
 **Generated:** 2026-01-22
 
-inherits: /canonic/
+inherits: /CANONIC/
 
 ---
 
@@ -12,35 +12,35 @@ inherits: /canonic/
 
 | Scope | Tier | Triad | Spec | Coverage | Roadmap | Freeze | Inherits |
 |-------|------|-------|------|----------|---------|--------|----------|
-| .github | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/ |
-| .transcripts | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
+| .github | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ |
+| .transcripts | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/os/ |
 | canonic | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | / |
-| machine | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /canonic/ |
-| os | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /canonic/machine/ |
-| language | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/ |
-| language/templates | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/language/ |
-| validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
-| ledger | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ |
+| machine | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /CANONIC/ |
+| os | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | **FROZEN** | /CANONIC/machine/ |
+| language | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ |
+| language/templates | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/language/ |
+| validators | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/os/ |
+| ledger | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/os/ |
 | stack | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | / |
 | transcript | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | / |
 | tutor | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | / |
-| paper | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
-| mammochat | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/services/products/paper/ |
-| companies | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
-| companies/foundation | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/ |
-| companies/foundation/assets | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/foundation/ |
-| companies/onconex | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/ |
-| companies/onconex/us | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/onconex/ |
-| companies/onconex/eu | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /companies/onconex/ |
-| publishing | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/paper/ |
-| atulisms | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
-| books | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
-| coin | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
-| dividends | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
-| grants | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/writing/ |
-| patents | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
-| token | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
-| writing | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /canonic/machine/os/ledger/ |
+| paper | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/writing/ |
+| mammochat | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /APPSTORE/PAPERS/paper/ |
+| companies | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/ |
+| companies/foundation | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /BUSINESS/companies/ |
+| companies/foundation/assets | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /BUSINESS/companies/foundation/ |
+| companies/onconex | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /BUSINESS/companies/ |
+| companies/onconex/us | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /BUSINESS/companies/onconex/ |
+| companies/onconex/eu | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /BUSINESS/companies/onconex/ |
+| publishing | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/writing/paper/ |
+| atulisms | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/writing/ |
+| books | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/writing/ |
+| coin | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/ |
+| dividends | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/writing/ |
+| grants | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/writing/ |
+| patents | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/ |
+| token | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/ |
+| writing | ENTERPRISE | ✓ | ✓ | ✓ | ✓ | - | /CANONIC/ledger/ |
 
 ---
 

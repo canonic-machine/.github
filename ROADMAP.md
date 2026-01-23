@@ -4,7 +4,7 @@
 
 **Generated:** 2026-01-22
 
-inherits: /canonic/
+inherits: /CANONIC/
 
 ---
 

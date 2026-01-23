@@ -1,6 +1,6 @@
 # APPSTORE (/.github/)
 
-inherits: /canonic/
+inherits: /CANONIC/
 
 ---
 
